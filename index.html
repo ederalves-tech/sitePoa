@@ -151,15 +151,20 @@
 <a class="whats" href="https://wa.me/5547996511712" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <!-- Scripts Necessários -->
+<<!-- Scripts Necessários -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script>
-    lightbox.option({
-        wrapAround: true,
-        resizeDuration: 200,
-        fadeDuration: 300,
-        imageFadeDuration: 300,
-        albumLabel: "Imagem %1 de %2"
+    // Garante que o jQuery e a página carregaram antes de executar as opções do Lightbox
+    $(document).ready(function() {
+        lightbox.option({
+            'wrapAround': true,
+            'resizeDuration': 200,
+            'fadeDuration': 300,
+            'imageFadeDuration': 300,
+            'albumLabel': "Imagem %1 de %2",
+            'alwaysShowNavOnTouchDevices': true
+        });
     });
 </script>
 
