@@ -14,10 +14,7 @@ header{position:fixed;top:0;width:100%;height:90px;background:rgba(0,0,0,.95);di
 .logo img{height:150px}
 nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:bold}
 nav a:hover{color:#ff2b2b}
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),url('cidade.jpg') center/cover;display:flex;align-items:center;padding:100px 8%}
-.hero h1{font-size:90px;line-height:.95;margin:20px 0}
-.hero p{font-size:22px;max-width:650px;margin-bottom:30px}
-.red{color:#ff2b2b;letter-spacing:6px}
+
 .btn{background:#e00000;color:#fff;text-decoration:none;padding:18px 35px;border-radius:10px;display:inline-block}
 section{padding:90px 8%}
 .titulo{text-align:center;font-size:48px;margin-bottom:50px}
@@ -44,244 +41,119 @@ nav{display:none}
 .stats{grid-template-columns:1fr 1fr}
 }
 
-@media(max-width:900px){
+@media (max-width:900px){
 
-.hero-content{
-    flex-direction: column; /* Alinha os itens em coluna */
-    width: 100%;
-    margin-left:20px;
-    margin-right:20px;
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:120px 25px 60px;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .hero-content{
+        margin:0;
+        max-width:100%;
+    }
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .hero p{
+        font-size:20px;
+    }
+
+    .red{
+        font-size:22px;
+        letter-spacing:4px;
+    }
+
+    .galeria{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
 }
-
-
-
-
-
-}
-
 
 .hero{
-    height:100vh;
     position:relative;
-    background:url("imagens/cidade.png");
-    background-size:cover;
-    background-position:center;
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
+        url("imagens/cidade.png") center center/cover no-repeat;
     display:flex;
     align-items:center;
-},
-    url("imagens/cidade.png");
-
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
+    padding:120px 8%;
 }
-
 
 .hero-content{
     position:relative;
     z-index:2;
-    max-width:650px;
-    margin-left:80px;
+    max-width:700px;
 }
 
 .red{
-    color:#ff0000;
-    letter-spacing:8px;
-    font-size:14px;
+    color:#ff2b2b;
+    font-size:28px;
     font-weight:700;
+    letter-spacing:6px;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:110px;
-    line-height:0.9;
+    font-size:95px;
+    line-height:.95;
     font-weight:900;
+    margin-bottom:25px;
     text-transform:uppercase;
-    margin:20px 0;
-    text-shadow:0 0 20px rgba(0,0,0,.8);
 }
 
 .hero p{
-    font-size:22px;
+    font-size:24px;
     color:#ddd;
-    margin-bottom:30px;
-}
-.overlay{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:
-    linear-gradient(
-        90deg,
-        rgba(0,0,0,.45) 0%,
-        rgba(0,0,0,.15) 50%,
-        rgba(0,0,0,.0) 100%
-    );
-    z-index:1;
+    line-height:1.6;
+    margin-bottom:35px;
 }
 
-.btn{
-    display:inline-block;
-    background:#ff0000;
-    color:#fff;
-    text-decoration:none;
-    padding:18px 35px;
-    border-radius:10px;
-    font-weight:700;
-    box-shadow:0 0 30px rgba(255,0,0,.4);
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.25),
+        transparent);
 }
-.carousel{
-    width:100%;
-    overflow:hidden;
-    position:relative;
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
     margin-top:40px;
 }
 
-.carousel-track{
-    display:flex;
-    gap:20px;
-    width:max-content;
-    animation:rolar 150s linear infinite;
-}
-
-..carousel-track img{
-    min-width:450px;
-    height:320px;
+.galeria img{
+    width:100%;
+    height:280px;
     object-fit:cover;
-    border-radius:20px;
-    border:3px solid #222;
-    transition:.3s;
-}
-
-.carousel-track img:hover{
-    transform:scale(1.05);
-    border-color:#ff0000;
-}
-
-.btn-carousel:hover{
-    background:#cc0000;
-    transform:translateY(-50%) scale(1.1);
-}
-
-@keyframes rolar{
-    0%{
-        transform:translateX(0);
-    }
-    100%{
-        transform:translateX(-50%);
-    }
-}
-.galeria-projetos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-    gap:25px;
-}
-
-.projeto{
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    background:#111;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    border-radius:18px;
     transition:.4s;
-}
-
-.projeto:hover{
-    transform:translateY(-10px);
-}
-
-.projeto img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    transition:.6s;
-}
-
-.projeto:hover img{
-    transform:scale(1.1);
-}
-
-.info{
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    padding:25px;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.95),
-        rgba(0,0,0,.4),
-        transparent
-    );
-}
-
-.info h3{
-    color:#ff2b2b;
-    margin-bottom:8px;
-    font-size:24px;
-}
-
-.info p{
-    color:#ddd;
-    font-size:15px;
-}
-
-@media(max-width:768px){
-    .galeria-projetos{
-        grid-template-columns:1fr;
-    }
-
-    .projeto img{
-        height:250px;
-    }
-}
-.carousel-container{
-    position:relative;
-    overflow:hidden;
-}
-
-.carousel-track{
-    display:flex;
-    gap:20px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    scrollbar-width:none;
-}
-
-.carousel-track::-webkit-scrollbar{
-    display:none;
-}
-
-.carousel-track img{
-    min-width:400px;
-    height:300px;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-.btn-carousel{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    width:60px;
-    height:60px;
-    border:none;
-    border-radius:50%;
-    background:#ff0000;
-    color:#fff;
-    font-size:30px;
     cursor:pointer;
-    z-index:10;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
-.prev{
-    left:10px;
-}
-
-.next{
-    right:10px;
+.galeria img:hover{
+    transform:scale(1.05);
+    box-shadow:0 15px 40px rgba(255,0,0,.35);
 }
 </style>
 </head>
@@ -292,7 +164,6 @@ nav{display:none}
 <nav>
 <a href="#inicio">Início</a>
 <a href="#sobre">Sobre</a>
-<a href="#servicos">Serviços</a>
 <a href="#projetos">Projetos</a>
 <a href="#contato">Contato</a>
 </nav>
@@ -327,121 +198,45 @@ nav{display:none}
 
 </section>
 
-<section id="servicos">
-    <h2 class="titulo">Nossos Serviços</h2>
-
-    <div class="carousel-container">
-
-        <button class="btn-carousel prev" onclick="moverServicos(-1)">
-            ❮
-        </button>
-
-        <div class="carousel-track" id="carouselServicos">
-
-            <img src="fachadas/2.jpg">
-            <img src="fachadas/3.jpg">
-            <img src="fachadas/4.jpg">
-
-            <img src="placas/15.jpg">
-            <img src="placas/16.jpg">
-            <img src="placas/17.jpg">
-
-            <img src="adesivos/adesivos.png">
-            <img src="adesivos/adesivos2.png">
-
-            <img src="envelopamento/1.jpg">
-            <img src="envelopamento/2.jpg">
-
-            <img src="projetos/1.jpg">
-            <img src="projetos/12.jpg">
-
-        </div>
-
-        <button class="btn-carousel next" onclick="moverServicos(1)">
-            ❯
-        </button>
-
-    </div>
-</section>
-
-<section id="sobre">
-<h2 class="titulo">Quem Somos</h2>
-<p style="max-width:900px;margin:auto;text-align:center;font-size:22px">Há mais de 40 anos a Art POÁ transforma ideias em resultados visuais impactantes, atendendo Itapoá e região com criatividade, qualidade e compromisso.</p>
-</section>
-
-<section>
-<div class="stats">
-<div class="item"><h2>500+</h2><p>Projetos</p></div>
-<div class="item"><h2>300+</h2><p>Clientes</p></div>
-<div class="item"><h2>40+</h2><p>Anos</p></div>
-<div class="item"><h2>100%</h2><p>Dedicação</p></div>
-</div>
-</section>
 
 <section id="projetos">
-    <h2 class="titulo">Projetos Realizados</h2>
+    <h2 class="titulo">Galeria de Projetos</h2>
 
-    <div class="galeria-projetos">
+    <div class="galeria">
 
-        <div class="projeto">
-            <img src="fachadas/2.jpg" alt="Fachada Comercial">
-            <div class="info">
-                <h3>Fachadas Comerciais</h3>
-                <p>Projetos modernos e personalizados para empresas.</p>
-            </div>
-        </div>
+        <img src="fachadas/2.jpg" alt="1">
+        <img src="fachadas/3.jpg" alt="2">
+        <img src="fachadas/4.jpg" alt="3">
+        <img src="fachadas/5.jpg" alt="4">
+        <img src="fachadas/6.jpg" alt="5">
 
-        <div class="projeto">
-            <img src="placas/15.jpg" alt="Placas">
-            <div class="info">
-                <h3>Placas Profissionais</h3>
-                <p>Sinalização interna e externa de alta qualidade.</p>
-            </div>
-        </div>
+        <img src="placas/13.jpg" alt="6">
+        <img src="placas/14.jpg" alt="7">
+        <img src="placas/15.jpg" alt="8">
+        <img src="placas/16.jpg" alt="9">
+        <img src="placas/17.jpg" alt="10">
 
-        <div class="projeto">
-            <img src="adesivos/adesivos.png" alt="Adesivos">
-            <div class="info">
-                <h3>Adesivos</h3>
-                <p>Personalização de vitrines, ambientes e veículos.</p>
-            </div>
-        </div>
+        <img src="adesivos/adesivos.png" alt="11">
+        <img src="adesivos/adesivos2.png" alt="12">
+        <img src="adesivos/8.jpg" alt="13">
+        <img src="adesivos/9.jpg" alt="13">
+        <img src="adesivos/10.jpg" alt="13">
+        <img src="adesivos/11.jpg" alt="13">
 
-        <div class="projeto">
-            <img src="envelopamento/1.jpg" alt="Envelopamento">
-            <div class="info">
-                <h3>Envelopamento</h3>
-                <p>Transforme seu veículo em uma mídia sobre rodas.</p>
-            </div>
-        </div>
+        <img src="envelopamento/1.jpg" alt="14">
+        
+        <img src="impressao/100.png" alt="17">
 
-        <div class="projeto">
-            <img src="impressao/100.png" alt="Impressão Digital">
-            <div class="info">
-                <h3>Impressão Digital</h3>
-                <p>Alta resolução e acabamento premium.</p>
-            </div>
-        </div>
-
-        <div class="projeto">
-            <img src="projetos/1.jpg" alt="Projeto Especial">
-            <div class="info">
-                <h3>Projetos Personalizados</h3>
-                <p>Soluções criativas sob medida para sua empresa.</p>
-            </div>
-        </div>
+        <img src="projetos/1.jpg" alt="18">
+        <img src="projetos/12.jpg" alt="19">
+        <img src="projetos/18.jpg" alt="20">
+        <img src="projetos/26.jpg" alt="21">
+        <img src="projetos/27.jpg" alt="22">
+        <img src="projetos/28.jpg" alt="23">
 
     </div>
 </section>
 
-<section>
-<h2 class="titulo">Depoimentos</h2>
-<div class="dep">
-<div>⭐⭐⭐⭐⭐<br><br>Excelente atendimento e acabamento impecável.</div>
-<div>⭐⭐⭐⭐⭐<br><br>Empresa séria e comprometida com prazos.</div>
-<div>⭐⭐⭐⭐⭐<br><br>Resultado acima das expectativas.</div>
-</div>
-</section>
 
 <section id="contato">
 <h2 class="titulo">Solicite um Orçamento</h2>
@@ -463,76 +258,5 @@ nav{display:none}
 <a class="whats" href="https://wa.me/5547996511712"><i class="fab fa-whatsapp"></i></a>
 
 </body>
-<script>
 
-const imagens = [
-
-'fachadas/2.jpg',
-'fachadas/3.jpg',
-'fachadas/4.jpg',
-'fachadas/5.jpg',
-'fachadas/6.jpg',
-'fachadas/7.jpg',
-'fachadas/8.jpg',
-'fachadas/9.jpg',
-'fachadas/10.jpg',
-'fachadas/11.jpg',
-
-'placas/15.jpg',
-'placas/14.jpg',
-'placas/13.jpg',
-'placas/16.jpg',
-'placas/17.jpg',
-'placas/19.jpg',
-'placas/20.jpg',
-'placas/21.jpg',
-'placas/22.jpg',
-'placas/23.jpg',
-'placas/24.jpg',
-'placas/29.jpg',
-
-'adesivos/adesivos.png',
-'adesivos/adesivos2.png',
-'adesivos/3.jpg',
-
-'envelopamento/1.jpg',
-'envelopamento/2.jpg',
-'envelopamento/3.jpg',
-
-'impressao/100.png',
-
-'projetos/1.jpg',
-'projetos/12.jpg',
-'projetos/18.jpg',
-'projetos/26.jpg',
-'projetos/27.jpg',
-'projetos/28.jpg'
-];
-
-const track = document.getElementById("carouselServicos");
-
-imagens.forEach(img => {
-    track.innerHTML += `
-        <img src="${img}"
-        onerror="this.src='https://picsum.photos/600/400?random='+Math.random()">
-    `;
-});
-
-// duplica para efeito infinito
-imagens.forEach(img => {
-    track.innerHTML += `
-        <img src="${img}"
-        onerror="this.src='https://picsum.photos/600/400?random='+Math.random()">
-    `;
-});
-function moverServicos(direcao){
-    const track = document.getElementById("carouselServicos");
-
-    track.scrollBy({
-        left: direcao * 450,
-        behavior: "smooth"
-    });
-}
-
-</script>
 </html>
