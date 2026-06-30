@@ -1,262 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART POÁ Comunicação Visual</title>
+    
+    <!-- Bibliotecas CSS externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
 
-<title>ART POÁ Comunicação Visual</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#050505;color:#fff}
-header{position:fixed;top:0;width:100%;height:90px;background:rgba(0,0,0,.95);display:flex;justify-content:space-between;align-items:center;padding:0 40px;z-index:1000;border-bottom:2px solid #d00}
-.logo img{height:150px}
-nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:bold}
-nav a:hover{color:#ff2b2b}
+    <style>
+        /* Reset e Configurações Gerais */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:Arial,sans-serif;background:#050505;color:#fff;line-height:1.6}
+        
+        /* Cabeçalho fixo (Aumentado para acomodar a logo maior) */
+        header{position:fixed;top:0;width:100%;height:120px;background:rgba(0,0,0,.95);display:flex;justify-content:space-between;align-items:center;padding:0 40px;z-index:1000;border-bottom:2px solid #d00}
+        .logo img{height:100px;display:block;width:auto;object-fit:contain} /* Logo aumentada para 100px */
+        nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:bold;transition:.3s}
+        nav a:hover{color:#ff2b2b}
 
-.btn{background:#e00000;color:#fff;text-decoration:none;padding:18px 35px;border-radius:10px;display:inline-block}
-section{padding:90px 8%}
-.titulo{text-align:center;font-size:48px;margin-bottom:50px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-.card{background:#111;border-radius:18px;overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-8px)}
-.card img{width:100%;height:190px;object-fit:cover}
-.card div{padding:20px}
-.card h3{color:#ff2b2b;margin-bottom:10px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.stats .item{background:#111;padding:30px;border-radius:15px;text-align:center}
-.stats h2{font-size:60px;color:#ff2b2b}
-.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.galeria img{width:100%;height:250px;object-fit:cover;border-radius:15px}
-.dep{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.dep div{background:#111;padding:25px;border-radius:15px}
-.form input,.form textarea{width:100%;padding:15px;margin-bottom:12px;background:#111;border:1px solid #333;color:#fff;border-radius:8px}
-.form button{width:100%;padding:15px;background:#d00;border:none;color:#fff;border-radius:8px}
-footer{text-align:center;padding:50px;background:#000;border-top:2px solid #d00}
-.whats{position:fixed;bottom:20px;right:20px;width:70px;height:70px;background:#25D366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;text-decoration:none}
-@media(max-width:900px){
-nav{display:none}
-.hero h1{font-size:50px}
-.stats{grid-template-columns:1fr 1fr}
-}
+        /* Componentes Comuns */
+        .btn{background:#e00000;color:#fff;text-decoration:none;padding:15px 30px;border-radius:10px;display:inline-block;font-weight:bold;transition:.3s;border:none;cursor:pointer}
+        .btn:hover{background:#ff2b2b;transform:scale(1.03)}
+        section{padding:150px 8% 60px} /* Compensando o header maior */
+        .titulo{text-align:center;font-size:42px;margin-bottom:50px;text-transform:uppercase}
+        
+        /* Seção Hero (Banner Principal) */
+        .hero{
+            position:relative;
+            min-height:100vh;
+            background:linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)), url("imagens/cidade.png") center center/cover no-repeat;
+            display:flex;
+            align-items:center;
+            padding:150px 8% 60px;
+        }
+        .hero-content{position:relative;z-index:2;max-width:700px}
+        .overlay{position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.3), transparent)}
+        .red{color:#ff2b2b;font-size:28px;font-weight:700;letter-spacing:6px;margin-bottom:20px}
+        .hero h1{font-size:80px;line-height:.95;font-weight:900;margin-bottom:25px;text-transform:uppercase}
+        .hero p{font-size:22px;color:#ddd;margin-bottom:35px}
 
-@media (max-width:900px){
+        /* Galeria de Fotos */
+        .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:40px}
+        .galeria img{width:100%;height:280px;object-fit:cover;border-radius:18px;transition:.4s;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+        .galeria img:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(255,0,0,.35)}
 
-    header{
-        padding:0 20px;
-    }
+        /* Formulário de Contato */
+        .form{max-width:600px;margin:0 auto}
+        .form input, .form textarea{width:100%;padding:15px;margin-bottom:15px;background:#111;border:1px solid #333;color:#fff;border-radius:8px;font-size:16px;font-family:inherit}
+        .form input:focus, .form textarea:focus{outline:none;border-color:#d00}
+        .form button{width:100%}
+        
+        /* Rodapé */
+        footer{text-align:center;padding:50px;background:#000;border-top:2px solid #d00}
+        footer h2{margin-bottom:15px}
+        footer p{color:#aaa;margin-top:5px}
+        
+        /* Botão Flutuante do WhatsApp */
+        .whats{position:fixed;bottom:20px;right:20px;width:65px;height:65px;background:#25D366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;text-decoration:none;z-index:999;box-shadow:0 4px 15px rgba(0,0,0,0.4);transition:.3s}
+        .whats:hover{transform:scale(1.1)}
 
-    nav{
-        display:none;
-    }
-
-    .hero{
-        padding:120px 25px 60px;
-        justify-content:center;
-        text-align:center;
-    }
-
-    .hero-content{
-        margin:0;
-        max-width:100%;
-    }
-
-    .hero h1{
-        font-size:60px;
-    }
-
-    .hero p{
-        font-size:20px;
-    }
-
-    .red{
-        font-size:22px;
-        letter-spacing:4px;
-    }
-
-    .galeria{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-    }
-
-}
-
-.hero{
-    position:relative;
-    min-height:100vh;
-    background:
-        linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
-        url("imagens/cidade.png") center center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    padding:120px 8%;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:700px;
-}
-
-.red{
-    color:#ff2b2b;
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:6px;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:95px;
-    line-height:.95;
-    font-weight:900;
-    margin-bottom:25px;
-    text-transform:uppercase;
-}
-
-.hero p{
-    font-size:24px;
-    color:#ddd;
-    line-height:1.6;
-    margin-bottom:35px;
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg,
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.25),
-        transparent);
-}
-
-.galeria{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
-    margin-top:40px;
-}
-
-.galeria img{
-    width:100%;
-    height:280px;
-    object-fit:cover;
-    border-radius:18px;
-    transition:.4s;
-    cursor:pointer;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-}
-
-.galeria img:hover{
-    transform:scale(1.05);
-    box-shadow:0 15px 40px rgba(255,0,0,.35);
-}
-</style>
+        /* Responsividade (Mobile e Tablets) */
+        @media(max-width:900px){
+            header{padding:0 20px; height:100px}
+            .logo img{height:80px} /* Um pouco menor no mobile para não esmagar os elementos */
+            nav{display:none}
+            .hero{padding:140px 25px 60px;justify-content:center;text-align:center}
+            .hero-content{max-width:100%}
+            .hero h1{font-size:45px}
+            .hero p{font-size:18px}
+            .red{font-size:20px;letter-spacing:4px}
+            .titulo{font-size:32px}
+            .galeria{grid-template-columns:1fr}
+        }
+    </style>
 </head>
 <body>
 
 <header>
-<div class="logo"><img src="imagens/1212.png"></div>
-<nav>
-<a href="#inicio">Início</a>
-<a href="#sobre">Sobre</a>
-<a href="#projetos">Projetos</a>
-<a href="#contato">Contato</a>
-</nav>
-<a class="btn" href="https://wa.me/5547996511712">WhatsApp</a>
+    <div class="logo">
+        <img src="imagens/1212.png" alt="Logo ART POÁ">
+    </div>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn" href="https://wa.me/5547996511712" target="_blank">WhatsApp</a>
 </header>
-
-
-
-
     
 <section class="hero" id="inicio">
-
     <div class="overlay"></div>
-
     <div class="hero-content">
-
         <div class="red">COMUNICAÇÃO VISUAL</div>
-
-        <h1>DAMOS VIDA<br>À SUA MARCA.</h1>
-
-        <p>
-            Soluções completas em fachadas, placas,
-            adesivos, envelopamentos, impressão digital
-            e muito mais.
-        </p>
-
-        <a href="https://wa.me/5547996511712" class="btn">
-            SOLICITAR ORÇAMENTO
-        </a>
-
+        <h1>Vamos Fazer<br>Um Trabalho Lindo</h1>
+        <p>Trabalhos em fachadas, placas, impressão digital e muito mais.</p>
+        <a href="https://wa.me/5547996511712" class="btn" target="_blank">SOLICITAR ORÇAMENTO</a>
     </div>
-
 </section>
-
 
 <section id="projetos">
     <h2 class="titulo">Galeria de Projetos</h2>
-
     <div class="galeria">
-
-        <img src="fachadas/2.jpg" alt="1">
-        <img src="fachadas/3.jpg" alt="2">
-        <img src="fachadas/4.jpg" alt="3">
-        <img src="fachadas/5.jpg" alt="4">
-        <img src="fachadas/6.jpg" alt="5">
-
-        <img src="placas/13.jpg" alt="6">
-        <img src="placas/14.jpg" alt="7">
-        <img src="placas/15.jpg" alt="8">
-        <img src="placas/16.jpg" alt="9">
-        <img src="placas/17.jpg" alt="10">
-
-        <img src="adesivos/adesivos.png" alt="11">
-        <img src="adesivos/adesivos2.png" alt="12">
-        <img src="adesivos/8.jpg" alt="13">
-        <img src="adesivos/9.jpg" alt="13">
-        <img src="adesivos/10.jpg" alt="13">
-        <img src="adesivos/11.jpg" alt="13">
-
-        <img src="envelopamento/1.jpg" alt="14">
-        
-        <img src="impressao/100.png" alt="17">
-
-        <img src="projetos/1.jpg" alt="18">
-        <img src="projetos/12.jpg" alt="19">
-        <img src="projetos/18.jpg" alt="20">
-        <img src="projetos/26.jpg" alt="21">
-        <img src="projetos/27.jpg" alt="22">
-        <img src="projetos/28.jpg" alt="23">
-
+        <a href="fachadas/2.jpg" data-lightbox="galeria"><img src="fachadas/2.jpg" alt="Fachada Comercial"></a>
+        <a href="fachadas/3.jpg" data-lightbox="galeria"><img src="fachadas/3.jpg" alt="Fachada Comercial"></a>
+        <a href="fachadas/4.jpg" data-lightbox="galeria"><img src="fachadas/4.jpg" alt="Fachada Comercial"></a>
+        <a href="fachadas/5.jpg" data-lightbox="galeria"><img src="fachadas/5.jpg" alt="Fachada Comercial"></a>
+        <a href="fachadas/6.jpg" data-lightbox="galeria"><img src="fachadas/6.jpg" alt="Fachada Comercial"></a>
+        <a href="placas/13.jpg" data-lightbox="galeria"><img src="placas/13.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/14.jpg" data-lightbox="galeria"><img src="placas/14.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/15.jpg" data-lightbox="galeria"><img src="placas/15.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/16.jpg" data-lightbox="galeria"><img src="placas/16.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/17.jpg" data-lightbox="galeria"><img src="placas/17.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/19.jpg" data-lightbox="galeria"><img src="placas/19.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/20.jpg" data-lightbox="galeria"><img src="placas/20.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/22.jpg" data-lightbox="galeria"><img src="placas/21.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/23.jpg" data-lightbox="galeria"><img src="placas/22.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/24.jpg" data-lightbox="galeria"><img src="placas/23.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/21.jpg" data-lightbox="galeria"><img src="placas/24.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/29.jpg" data-lightbox="galeria"><img src="placas/29.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/100.png" data-lightbox="galeria"><img src="placas/100.png" alt="Placa de Sinalização"></a>
+        <a href="placas/12.jpg" data-lightbox="galeria"><img src="placas/12.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/18.jpg" data-lightbox="galeria"><img src="placas/18.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/26.jpg" data-lightbox="galeria"><img src="placas/26.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/27.jpg" data-lightbox="galeria"><img src="placas/27.jpg" alt="Placa de Sinalização"></a>
+        <a href="placas/28.jpg" data-lightbox="galeria"><img src="placas/28.jpg" alt="Placa de Sinalização"></a>
     </div>
 </section>
 
-
 <section id="contato">
-<h2 class="titulo">Solicite um Orçamento</h2>
-<form class="form">
-<input placeholder="Nome">
-<input placeholder="Telefone">
-<textarea rows="6" placeholder="Mensagem"></textarea>
-<button>Enviar</button>
-</form>
+    <h2 class="titulo">Solicite um Orçamento</h2>
+    <form class="form" action="#" method="POST">
+        <input type="text" placeholder="Nome" required>
+        <input type="tel" placeholder="Telefone" required>
+        <textarea rows="6" placeholder="Mensagem" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+    </form>
 </section>
 
 <footer>
-<h2>ART POÁ Comunicação Visual</h2>
-<p>Itapoá - SC</p>
-<p>(47) 99651-1712</p>
-<p>(41) 99981-1583</p>
+    <h2>ART POÁ Comunicação Visual</h2>
+    <p>Itapoá - SC</p>
+    <p>(47) 99651-1712</p>
+    <p>(41) 99981-1583</p>
 </footer>
 
-<a class="whats" href="https://wa.me/5547996511712"><i class="fab fa-whatsapp"></i></a>
+<!-- Botão Flutuante do WhatsApp -->
+<a class="whats" href="https://wa.me/5547996511712" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Scripts Necessários -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        wrapAround: true,
+        resizeDuration: 200,
+        fadeDuration: 300,
+        imageFadeDuration: 300,
+        albumLabel: "Imagem %1 de %2"
+    });
+</script>
 
 </body>
-
 </html>
