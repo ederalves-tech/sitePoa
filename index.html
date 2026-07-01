@@ -108,9 +108,21 @@ header>.btn{display:none}
 }
 </style>
 </head><body>
-<header id="header"><div class="logo"><img src="imagens/1212.png"></div><i id="menu" class="fa fa-bars"></i><nav id="nav"><a href="#inicio">Início</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav><a class="btn" href="https://wa.me/5547996511712">WhatsApp</a></header>
-<section class="hero" id="inicio"><div><h1>Vamos Fazer<br>Um Trabalho Lindo</h1><p>Fachadas, placas, impressão digital e muito mais.</p><a class="btn" href="https://wa.me/5547996511712">Solicitar orçamento</a></div></section>
-<section id="projetos"><h2 class="titulo">Galeria de Projetos</h2><div class="galeria">
+<header id="header">
+<div class="logo"><img src="imagens/1212.png">
+</div>
+
+<i id="menu" class="fa fa-bars"></i><nav id="nav"><a href="#inicio">Início</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav><a class="btn" href="https://wa.me/5547996511712">WhatsApp</a></header>
+
+
+<section class="hero" id="inicio"><div><h1>Vamos Fazer<br>Um Trabalho Lindo</h1><p>Fachadas, placas, impressão digital e muito mais.</p><a class="btn" href="https://wa.me/5547996511712">Solicitar orçamento</a></div>
+
+</section>
+
+
+<section id="projetos">
+<h2 class="titulo">Galeria de Projetos</h2>
+<div class="galeria">
  
 
     
@@ -163,7 +175,6 @@ header>.btn{display:none}
 
 <a href="placas/24.jpg" class="glightbox" data-gallery="galeria"><img src="placas/24.jpg" alt=""></a>
 
-<a href="placas/25.jpg" class="glightbox" data-gallery="galeria"><img src="placas/25.jpg" alt=""></a>
 
 <a href="placas/27.jpg" class="glightbox" data-gallery="galeria"><img src="placas/27.jpg" alt=""></a>
 
@@ -179,7 +190,45 @@ header>.btn{display:none}
 
 
 </div></section>
-<section id="contato"><h2 class="titulo">Solicite um Orçamento</h2><form class="form"><input placeholder="Nome"><input placeholder="Telefone"><textarea rows="6" placeholder="Mensagem"></textarea><button class="btn" type="submit">Enviar</button></form></section>
+<section id="contato">
+  <h2 class="titulo">Solicite um Orçamento</h2>
+
+  <!-- Adicionado o id "form-whatsapp" para controlar o envio -->
+  <form class="form" id="form-whatsapp">
+    <!-- Adicionado id e required em cada campo -->
+    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="tel" id="telefone" placeholder="Telefone" required>
+    <textarea id="mensagem" rows="6" placeholder="Mensagem" required></textarea>
+    
+    <button class="btn" type="submit">Enviar</button>
+  </form>
+</section>
+
+<script>
+  document.getElementById('form-whatsapp').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o formulário de recarregar a página
+
+    // INSERA SEU NÚMERO AQUI (com DDD, apenas números. Ex: 5511999999999)
+    const numeroWhatsapp = "5547996511712"; 
+
+    // Pega os valores dos campos
+    const nome = document.getElementById('nome').value;
+    const telefone = document.getElementById('telefone').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    // Formata a mensagem que vai chegar no seu WhatsApp
+    const textoMensagem = `Olá! Gostaria de um orçamento.%0A%0A` +
+                          `*Nome:* ${encodeURIComponent(nome)}%0A` +
+                          `*Telefone:* ${encodeURIComponent(telefone)}%0A` +
+                          `*Mensagem:* ${encodeURIComponent(mensagem)}`;
+
+    // Cria o link final da API do WhatsApp
+    const url = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${textoMensagem}`;
+
+    // Abre o WhatsApp em uma nova aba
+    window.open(url, '_blank');
+  });
+</script>
 <footer>ART POÁ Comunicação Visual<br>Itapoá - SC</footer>
 <a class="topo" href="#inicio"><i class="fa fa-arrow-up"></i></a>
 <a class="whats" href="https://wa.me/5547996511712"><i class="fab fa-whatsapp"></i></a>
