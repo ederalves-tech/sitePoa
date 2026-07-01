@@ -1,109 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ART POÁ Comunicação Visual</title>
-    
-    <!-- Bibliotecas CSS externos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ART POÁ Comunicação Visual</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#050505;color:#fff}
+header{position:fixed;top:0;left:0;width:100%;height:90px;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:999}
+header.scrolled{background:#000}
 
-    <style>
-        /* Reset e Configurações Gerais */
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:Arial,sans-serif;background:#050505;color:#fff;line-height:1.6}
-        
-        /* Cabeçalho fixo (Aumentado para acomodar a logo maior) */
-        header{position:fixed;top:0;width:100%;height:120px;background:rgba(0,0,0,.95);display:flex;justify-content:space-between;align-items:center;padding:0 40px;z-index:1000;border-bottom:2px solid #d00}
-        .logo img{height:100px;display:block;width:auto;object-fit:contain} /* Logo aumentada para 100px */
-        nav a{color:#fff;text-decoration:none;margin:0 15px;font-weight:bold;transition:.3s}
-        nav a:hover{color:#ff2b2b}
+.logo img{
+    height:100px;
+    width:auto;
+    object-fit:contain;
+}
 
-        /* Componentes Comuns */
-        .btn{background:#e00000;color:#fff;text-decoration:none;padding:15px 30px;border-radius:10px;display:inline-block;font-weight:bold;transition:.3s;border:none;cursor:pointer}
-        .btn:hover{background:#ff2b2b;transform:scale(1.03)}
-        section{padding:150px 8% 60px} /* Compensando o header maior */
-        .titulo{text-align:center;font-size:42px;margin-bottom:50px;text-transform:uppercase}
-        
-        /* Seção Hero (Banner Principal) */
-        .hero{
-            position:relative;
-            min-height:100vh;
-            background:linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)), url("imagens/cidade.png") center center/cover no-repeat;
-            display:flex;
-            align-items:center;
-            padding:150px 8% 60px;
-        }
-        .hero-content{position:relative;z-index:2;max-width:700px}
-        .overlay{position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.3), transparent)}
-        .red{color:#ff2b2b;font-size:28px;font-weight:700;letter-spacing:6px;margin-bottom:20px}
-        .hero h1{font-size:80px;line-height:.95;font-weight:900;margin-bottom:25px;text-transform:uppercase}
-        .hero p{font-size:22px;color:#ddd;margin-bottom:35px}
+nav{display:flex;gap:20px}
+nav a{text-decoration:none;color:#fff;font-weight:bold}
+.btn{background:#d00;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none}
+.hero{min-height:100vh;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('imagens/cidade.png') center/cover;display:flex;align-items:center;padding:120px 8%}
+.hero h1{font-size:70px}.hero p{font-size:22px;margin:20px 0}
+section{padding:70px 8%}
+.titulo{text-align:center;font-size:40px;margin-bottom:40px}
+.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.galeria img{width:100%;height:230px;object-fit:cover;border-radius:14px}
+.form{max-width:600px;margin:auto}
+.form input,.form textarea{width:100%;padding:14px;margin-bottom:12px;background:#111;color:#fff;border:1px solid #444;border-radius:8px}
+footer{text-align:center;padding:40px;background:#000}
+.whats,.topo{position:fixed;right:20px;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none}
+.whats{bottom:20px;background:#25D366}.topo{bottom:90px;background:#d00}
+#menu{display:none;font-size:28px;cursor:pointer}
+@media(max-width:768px){
+header{height:75px}.logo img{height:55px}
+nav{display:none;position:absolute;top:75px;left:0;width:100%;background:#000;flex-direction:column;padding:15px}
+nav.show{display:flex}
+#menu{display:block}
+header>.btn{display:none}
+.hero{text-align:center;justify-content:center;padding:100px 20px}
+.hero h1{font-size:38px}.hero p{font-size:17px}
+.galeria{grid-template-columns:repeat(2,1fr)}
+.galeria img{height:150px}
+}
+@media(max-width:430px){.galeria{grid-template-columns:1fr}.hero h1{font-size:30px}}
+</style>
+</head><body>
+<header id="header"><div class="logo"><img src="imagens/1212.png"></div><i id="menu" class="fa fa-bars"></i><nav id="nav"><a href="#inicio">Início</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav><a class="btn" href="https://wa.me/5547996511712">WhatsApp</a></header>
+<section class="hero" id="inicio"><div><h1>Vamos Fazer<br>Um Trabalho Lindo</h1><p>Fachadas, placas, impressão digital e muito mais.</p><a class="btn" href="https://wa.me/5547996511712">Solicitar orçamento</a></div></section>
+<section id="projetos"><h2 class="titulo">Galeria de Projetos</h2><div class="galeria">
 
-        /* Galeria de Fotos */
-        .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:40px}
-        .galeria img{width:100%;height:280px;object-fit:cover;border-radius:18px;transition:.4s;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-        .galeria img:hover{transform:scale(1.05);box-shadow:0 15px 40px rgba(255,0,0,.35)}
 
-        /* Formulário de Contato */
-        .form{max-width:600px;margin:0 auto}
-        .form input, .form textarea{width:100%;padding:15px;margin-bottom:15px;background:#111;border:1px solid #333;color:#fff;border-radius:8px;font-size:16px;font-family:inherit}
-        .form input:focus, .form textarea:focus{outline:none;border-color:#d00}
-        .form button{width:100%}
-        
-        /* Rodapé */
-        footer{text-align:center;padding:50px;background:#000;border-top:2px solid #d00}
-        footer h2{margin-bottom:15px}
-        footer p{color:#aaa;margin-top:5px}
-        
-        /* Botão Flutuante do WhatsApp */
-        .whats{position:fixed;bottom:20px;right:20px;width:65px;height:65px;background:#25D366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;text-decoration:none;z-index:999;box-shadow:0 4px 15px rgba(0,0,0,0.4);transition:.3s}
-        .whats:hover{transform:scale(1.1)}
-
-        /* Responsividade (Mobile e Tablets) */
-        @media(max-width:900px){
-            header{padding:0 20px; height:100px}
-            .logo img{height:80px} /* Um pouco menor no mobile para não esmagar os elementos */
-            nav{display:none}
-            .hero{padding:140px 25px 60px;justify-content:center;text-align:center}
-            .hero-content{max-width:100%}
-            .hero h1{font-size:45px}
-            .hero p{font-size:18px}
-            .red{font-size:20px;letter-spacing:4px}
-            .titulo{font-size:32px}
-            .galeria{grid-template-columns:1fr}
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo">
-        <img src="imagens/1212.png" alt="Logo ART POÁ">
-    </div>
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-    </nav>
-    <a class="btn" href="https://wa.me/5547996511712" target="_blank">WhatsApp</a>
-</header>
-    
-<section class="hero" id="inicio">
-    <div class="overlay"></div>
-    <div class="hero-content">
-        <div class="red">COMUNICAÇÃO VISUAL</div>
-        <h1>Vamos Fazer<br>Um Trabalho Lindo</h1>
-        <p>Trabalhos em fachadas, placas, impressão digital e muito mais.</p>
-        <a href="https://wa.me/5547996511712" class="btn" target="_blank">SOLICITAR ORÇAMENTO</a>
-    </div>
-</section>
-
-<section id="projetos">
-    <h2 class="titulo">Galeria de Projetos</h2>
-    <div class="galeria">
         <a href="placas/2.jpg" data-lightbox="galeria"><img src="placas/2.jpg" alt="Fachada Comercial"></a>
         <a href="placas/3.jpg" data-lightbox="galeria"><img src="placas/3.jpg" alt="Fachada Comercial"></a>
         <a href="placas/4.jpg" data-lightbox="galeria"><img src="placas/4.jpg" alt="Fachada Comercial"></a>
@@ -134,46 +83,17 @@
         <a href="placas/11.jpg" data-lightbox="galeria"><img src="placas/27.jpg" alt="Placa de Sinalização"></a>
         <a href="placas/adesivos.png" data-lightbox="galeria"><img src="placas/adesivos.png" alt="Placa de Sinalização"></a>
 
-    </div>
-</section>
 
-<section id="contato">
-    <h2 class="titulo">Solicite um Orçamento</h2>
-    <form class="form" action="#" method="POST">
-        <input type="text" placeholder="Nome" required>
-        <input type="tel" placeholder="Telefone" required>
-        <textarea rows="6" placeholder="Mensagem" required></textarea>
-        <button type="submit" class="btn">Enviar</button>
-    </form>
-</section>
-
-<footer>
-    <h2>ART POÁ Comunicação Visual</h2>
-    <p>Itapoá - SC</p>
-    <p>(47) 99651-1712</p>
-    <p>(41) 99981-1583</p>
-</footer>
-
-<!-- Botão Flutuante do WhatsApp -->
-<a class="whats" href="https://wa.me/5547996511712" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-<!-- Scripts Necessários -->
-<<!-- Scripts Necessários -->
+</div></section>
+<section id="contato"><h2 class="titulo">Solicite um Orçamento</h2><form class="form"><input placeholder="Nome"><input placeholder="Telefone"><textarea rows="6" placeholder="Mensagem"></textarea><button class="btn" type="submit">Enviar</button></form></section>
+<footer>ART POÁ Comunicação Visual<br>Itapoá - SC</footer>
+<a class="topo" href="#inicio"><i class="fa fa-arrow-up"></i></a>
+<a class="whats" href="https://wa.me/5547996511712"><i class="fab fa-whatsapp"></i></a>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script>
-    // Garante que o jQuery e a página carregaram antes de executar as opções do Lightbox
-    $(document).ready(function() {
-        lightbox.option({
-            'wrapAround': true,
-            'resizeDuration': 200,
-            'fadeDuration': 300,
-            'imageFadeDuration': 300,
-            'albumLabel': "Imagem %1 de %2",
-            'alwaysShowNavOnTouchDevices': true
-        });
-    });
+menu.onclick=()=>nav.classList.toggle('show');
+window.onscroll=()=>header.classList.toggle('scrolled',scrollY>40);
+lightbox.option({wrapAround:true,albumLabel:"Imagem %1 de %2"});
 </script>
-
-</body>
-</html>
+</body></html>
